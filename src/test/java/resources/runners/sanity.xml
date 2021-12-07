@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="testsuite" verbose="1" >
+    <!--<groups>
+        <run>
+            <include name="sanity"/>
+        </run>
+    </groups>-->
+
+    <listeners>
+        <listener class-name="com.nopcommerce.customlisteners.CustomListeners"/>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+    <test name="Sanity Test" >
+        <parameter name="email" value="prim@gmail.com"></parameter>
+        <parameter name="password" value="prim123"></parameter>
+        <parameter name="email1" value="sarpatel@gmail.com"></parameter>
+        <parameter name="password1" value="Prime123"></parameter>
+        <classes>
+            <class name="com.nopcommerce.testsuite.RegisterPageTest">
+                <methods>
+                    <include name="verifyUserShouldNavigateToRegisterPagsuccessFully"></include>
+                    <include name="verifyThatFirstNameLastNameEmailAndPasswordAndConfirmPasswordFieldsAreMandatory"></include>
+                </methods>
+            </class>
+            <class name="com.nopcommerce.testsuite.LoginPageTest">
+                <methods>
+                    <include name="userShouldNavigateToLoginPageSuccessFully"></include>
+                    <include name="verifyTheErrorMessageWithInValidCredentials"></include>
+                </methods>
+            </class>
+            <class name="com.nopcommerce.testsuite.ComputerPageTest">
+                <methods>
+                    <include name="verifyUserShouldNavigateToComputerPageSuccessfully"></include>
+                    <include name="verifyUserShouldNavigateToDesktopsPageSuccessfully"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
